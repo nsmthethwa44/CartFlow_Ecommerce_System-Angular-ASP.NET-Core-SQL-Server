@@ -1,0 +1,24 @@
+<section class="banner about section">
+    <div class="banner-wrapper">
+        <h1>Blog</h1>
+    </div>
+</section>
+
+<section class="section news" id="blog">
+    <div class="container">
+        <div class="container-box">
+            <div class="box" *ngFor="let item of news">
+                <div class="box-img"><img [src]=`${item?.imageUrl}` alt="" class="img-box"></div>
+                <div class="text-box">
+                    <span class="date">23-04-2025</span>
+                    <div class="tags">
+                        <p><i class="fa-solid fa-user"></i>By Admin</p>
+                        <p><i class="fa-solid fa-tag"></i>Business</p>
+                    </div>
+                    <h3>Lorem ipsum dolor sit.</h3>
+                    <a href="#" class="read-more">Read More<i class="fa-solid fa-arrow-right-long"></i></a>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>

@@ -1,0 +1,42 @@
+<section class="banner about section">
+    <div class="banner-wrapper">
+        <h1>Products</h1>
+    </div>
+</section>
+
+<section class="popular section" id="popular">
+    <div class="container">
+          @if (isLoading) {
+            <div class="isLoading">
+                <div class="loader"></div>
+            </div>
+        }@else {
+        <div class="container-box">
+            <div class="box" *ngFor="let item of products">
+                <div class="box-img"><img [src]=`${getImageUrl(item?.imageUrl)}` alt={{item?.name}} class="img-box"></div>
+                <div class="text">
+                    <h3>{{item?.name}}</h3>
+                      <div class="rating">
+                        <i class="fa-solid fa-star"></i>
+                        <i class="fa-solid fa-star"></i>
+                        <i class="fa-solid fa-star"></i>
+                        <i class="fa-regular fa-star-half-stroke"></i>
+                        <i class="fa-regular fa-star"></i>
+                    </div>
+                     <div class="price">
+                        <h2>{{item?.price | currency: "R"}}</h2>
+                        <div class="add-cart">
+                            <i class="fa-solid fa-eye" (click)="openProductDetailsPopup(item)"></i>
+                            <i class="fa-solid fa-heart"></i>
+                            <i class="fa-solid fa-cart-plus"  (click)="addToCart(item.id)"></i>
+                        </div>
+                     </div>
+                </div>
+            </div>
+        </div>
+    }
+
+    </div>
+</section>
+
+<app-product-details  *ngIf="selectedProduct" [product]="selectedProduct" (close)="selectedProduct=null"></app-product-details>

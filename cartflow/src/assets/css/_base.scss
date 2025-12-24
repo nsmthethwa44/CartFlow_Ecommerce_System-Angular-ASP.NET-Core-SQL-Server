@@ -1,0 +1,433 @@
+@import "./variables";
+@import "./mixins";
+
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    list-style: none;
+    text-decoration: none;
+    scroll-behavior: smooth;
+}
+
+body{
+    background: $body-bg;
+    
+}
+
+h1, h2, h3, h4, h5, h6{
+    font-family: $h2ff;
+    font-weight: 600;
+     color: $text-dark;
+}
+
+h3{
+    font-size: $h3fs;
+    font-family: $h3ff;
+}
+
+p{
+    font-size: $pfs;
+    font-family: $pff;
+    color: $mute-color;
+}
+
+span{
+    color: $primary-color;
+}
+
+.section{
+    padding: 50px $space-1;
+}
+
+   
+
+.img-box{
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.heading{
+    @include flex-justify;
+    align-items: center;
+    gap: $space-1;
+    margin-bottom: $space-1;
+}
+
+.buttons{
+    .btn{
+        outline: none;
+        border: none;
+        cursor: pointer;
+        padding: $space-1 $space-1;
+        color: $color;
+        background: $primary-color;
+        border-radius: $radius;
+        box-shadow: $shadow;
+        text-transform: uppercase;
+        font-weight: 600;
+        font-size: $pfs;
+        font-family: $pff;
+        @include flex-center;
+        gap: $space-1;
+        text-align: center;
+
+        &.secondary{
+            background: $text-dark;
+        }
+
+        &:hover{
+            background: $secondary-color;
+        }
+    }
+}
+
+.date{
+    @include flex-center;
+    gap: $space-1;
+    color: $text-dark;
+    font-size: $pfs;
+    font-family: $pff;
+    font-weight: 600;
+    padding: $space-3 $space-1;
+    background: $card-bg;
+    border-radius: $radius;
+}
+
+
+.isLoading {
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+
+    .loader{
+        width: 3rem;
+        height: 3rem;
+        background: $card-bg-alt;
+        border-radius: 50%;
+        border: 5px solid $card-bg;
+        animation: pulse 1.5s infinite ease-in-out;
+        box-shadow: $shadow;
+
+        @keyframes pulse {
+            0% {opacity: 0.6; }
+            50% {opacity: 1; }
+            100% {opacity: 0.6; transform: rotate(360deg);}
+            
+        }
+    }
+  }
+
+  .section-title{
+      @include flex-center;
+      margin-bottom: $space-2;
+
+      .text{
+        text-align: center;
+        @include flex-center;
+        flex-direction: column;
+        gap: .3rem;
+
+        span{
+          border: 1px solid $primary-color;
+          padding: .3rem $space-3;
+          border-radius: 30px;
+          font-size: $pfs;
+          font-family: $pff;
+          font-weight: 600;
+        background: $body-bg;
+        }
+      }
+
+      .buttons{
+        .btn{
+            padding: .7rem $space-1;
+            border-radius: 30px;
+            background: $text-dark
+        }
+      }
+    }
+
+.table-container {
+  width: 100%;
+  overflow-x: auto;
+}
+
+.cart-table {
+  width: 100%;
+  border-collapse: collapse;
+  background: $card-bg;
+  color: $text-dark;
+
+  th,
+  td {
+    color: $text-dark;
+    padding: $space-3 $space-1;
+    text-align: left;
+    border-bottom: 1px solid $card-bg-alt;
+    font-family: $pff;
+    font-size: $pfs;
+  }
+
+  th {
+    font-family: $h3ff;
+    font-weight: 600;
+    font-size: $pfs;
+    text-transform: uppercase;
+    letter-spacing: 0.04em;
+    opacity: 0.85;
+  }
+
+  tbody tr:hover {
+    background: rgba(255, 255, 255, 0.04);
+  }
+}
+
+.product-cell {
+  display: flex;
+  align-items: center;
+  gap: $space-1;
+
+  .box-img {
+    width: 4rem;
+    height: 4rem;
+   padding: $space-3 $space-3;
+    border-radius: $radius;
+    background: $card-bg-alt;
+
+    .img-box{
+         object-fit: contain;
+    }
+  }
+
+  .name {
+    font-weight: 500;
+    color: $text-dark;
+  }
+}
+
+.delete-btn {
+    width: 2.5rem;
+    height: 2.5rem;
+  background: rgba($color-danger, 0.15);
+  border: none;
+  color: $color-danger;
+  font-size: 1.1rem;
+  cursor: pointer;
+  border-radius: 50%;
+//   box-shadow: $shadow;
+
+  &:hover {
+    color: $color;
+    background: $secondary-color;
+  }
+}
+
+@media (max-width: 768px) {
+  .cart-table,
+  .cart-table thead,
+  .cart-table tbody,
+  .cart-table th,
+  .cart-table td,
+  .cart-table tr {
+    display: block;
+    width: 100%;
+  }
+
+  .cart-table thead {
+    display: none;
+  }
+
+  .cart-table tr {
+    margin-bottom: $space-1;
+    padding: $space-1 $space-1;
+    border-radius: $radius;
+    background: $card-bg-alt;
+  }
+
+  .cart-table td {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: $space-3 0;
+    border: none;
+
+    &::before {
+      content: attr(data-label);
+      font-size: 0.75rem;
+      font-weight: 600;
+      text-transform: uppercase;
+      opacity: 0.6;
+    }
+  }
+
+  .product-cell {
+    flex-direction: row;
+    justify-content: flex-start;
+  }
+}
+
+
+.table-content {
+//   background: $card-bg;
+//   padding: $space-1;
+//   border-radius: $radius;
+  overflow-x: auto;
+
+.table-box {
+  width: 100%;
+  border-collapse: collapse;
+  min-width: 900px;
+//   background: $color;
+  border-radius: $radius;
+  overflow: hidden;
+
+  thead {
+    // background: $primary-color;
+
+    th {
+      padding: $space-3;
+      text-align: left;
+      font-size: $h3fs;
+      font-family: $h3ff;
+      color: $text-dark;
+      white-space: nowrap;
+    }
+  }
+
+  tbody {
+    tr {
+      border-bottom: 1px solid $card-bg-alt;
+      transition: background 0.2s ease;
+
+      &:hover {
+        background: $body-bg;
+      }
+    }
+
+    td {
+      padding: $space-3;
+      font-size: $pfs;
+      font-family: $pff;
+      color: $text-dark;
+      vertical-align: middle;
+
+.status {
+  padding: 0.2rem 0.6rem;
+  border-radius: $radius;
+  font-size: 0.7rem;
+  font-weight: 600;
+  text-transform: capitalize;
+
+  &.pending {
+    background: rgba($color-warning, 0.15);
+    color: $color-warning;
+  }
+
+  &.completed {
+    background: rgba($color-success, 0.15);
+    color: $color-success;
+  }
+
+  &.cancelled {
+    background: rgba($color-danger, 0.15);
+    color: $color-danger;
+  }
+}
+
+.user,
+.product {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+
+  img {
+    width: 2.5rem;
+    height: 2.5rem;
+    border-radius: 50%;
+    object-fit: cover;
+  }
+}
+
+.buttons{
+  @include flex;
+  gap: $space-3;
+
+    i{
+    width: 2.5rem;
+    height: 2.5rem;
+  border: none;
+  font-size: 1.1rem;
+  cursor: pointer;
+  border-radius: 50%;
+//   box-shadow: $shadow;
+  @include flex-center;
+
+    &.fa-eye {
+    background: rgba($primary-color, 0.15);
+    color: $primary-color;
+  }
+
+  &.fa-pen {
+    background: rgba($color-success, 0.15);
+    color: $color-success;
+  }
+
+  &.fa-trash-can {
+    background: rgba($color-danger, 0.15);
+    color: $color-danger;
+  }
+
+  &:hover {
+    color: $color;
+    background: $secondary-color;
+  }
+    }
+}
+
+    }
+  }
+}
+}
+
+
+
+
+// @media (max-width: 768px) {
+//   .table-box {
+//     min-width: unset;
+//     border: none;
+
+//     thead {
+//       display: none;
+//     }
+
+//     tbody tr {
+//       display: block;
+//       background: $color;
+//       margin-bottom: $space-1;
+//       border-radius: $radius;
+//       padding: $space-1;
+//     }
+
+//     tbody td {
+//       display: flex;
+//       justify-content: space-between;
+//       padding: 0.4rem 0;
+//       border-bottom: 1px dashed $card-bg-alt;
+
+//       &::before {
+//         content: attr(data-label);
+//         font-weight: 600;
+//         color: $mute-color;
+//       }
+
+//       &:last-child {
+//         border-bottom: none;
+//       }
+//     }
+//   }
+// }

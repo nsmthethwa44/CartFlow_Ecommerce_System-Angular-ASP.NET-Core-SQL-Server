@@ -1,0 +1,26 @@
+<section class="categories section" id="categories">
+    <div class="container">
+        <div class="section-title">
+            <div class="text">
+                <span>Categories</span>
+                <h2>Shop By Top Categories</h2>
+            </div>
+        </div>
+
+        @if (isLoading) {
+            <div class="isLoading">
+                <div class="loader"></div>
+            </div>
+        }@else {
+   <div class="container-box">
+            <div class="box" *ngFor="let item of categories">
+                <div class="box-img"><img [src]=`${getImageUrl(item.imageUrl)}` alt="" class="img-box"></div>
+                <div class="text">
+                    <h3>{{item.name}}</h3>
+                </div>
+            </div>
+        </div>
+        }
+     
+    </div>
+</section>

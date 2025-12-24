@@ -1,0 +1,30 @@
+<section class="section news" id="news">
+    <div class="container">
+            <div class="section-title">
+            <div class="text">
+                <span>Recent News</span>
+                <h2>Lorem, ipsum News</h2>
+            </div>
+
+            <div class="buttons">
+                <button class="btn" routerLink="/blog">View All<i class="fa-solid fa-arrow-right-long"></i></button>
+            </div>
+        </div>
+
+        <div class="container-box">
+            <div class="box" *ngFor="let item of news">
+                <div class="box-img"><img [src]=`${item?.imageUrl}` alt="" class="img-box"></div>
+                <div class="text-box">
+                    <span class="date">23-04-2025</span>
+                    <div class="tags">
+                        <p><i class="fa-solid fa-user"></i>By Admin</p>
+                        <p><i class="fa-solid fa-tag"></i>Business</p>
+                    </div>
+                    <h3>Lorem ipsum dolor sit.</h3>
+                    <a href="#" class="read-more">Read More<i class="fa-solid fa-arrow-right-long"></i></a>
+                </div>
+            </div>
+            
+        </div>
+    </div>
+</section>

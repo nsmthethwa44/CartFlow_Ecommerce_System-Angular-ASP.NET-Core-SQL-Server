@@ -1,0 +1,54 @@
+<!-- manage categories content  -->
+ <div class="manage-categories-products-content content-wrapper">
+
+    <!-- title  -->
+    <div class="title">
+        <h2>Manage Categories</h2>
+        <span class="date"><i class="fa-regular fa-calendar-days"></i>{{ getDate() | date: 'MMM d, y, h:m a' }}</span>
+    </div>
+
+    <!-- category box container -->
+    <div class="container-box">
+        <div class="controls">
+            <div class="search">
+                <div class="search-box">
+                    <i class="fa-solid fa-magnifying-glass"></i>
+                    <input type="text" class="search-text" placeholder="Search categories">
+                </div>
+            </div>
+
+            <div class="filter">
+                <div class="filter-box">
+                    <i class="fa-solid fa-filter"></i>
+                    <i class="fa-solid fa-border-all"></i>
+                </div>
+                <div class="buttons">
+                    <button class="btn" (click)="toggleAddCategory()"><i class="fa-solid fa-plus"></i> Add New</button>
+                </div>
+            </div>
+        </div>
+
+        @if (isLoading) {
+            <div class="isLoading">
+                <div class="loader"></div>
+            </div>
+        }@else {
+         <div class="card-container">
+            <div class="box" *ngFor="let item of categories">
+                <div class="box-img"><img [src]=`${getImageUrl(item.imageUrl)}` alt="" class="img-box"></div>
+                <div class="text-box">
+                    <h3>{{item.name}}</h3>
+                    <div class="buttons">
+                        <i class="fa-solid fa-eye"></i>
+                        <i class="fa-solid fa-pen"></i>
+                        <i class="fa-solid fa-trash-can" (click)="deleteCategory(item.id)"></i>
+                    </div>
+                </div>
+            </div>
+        </div>
+        }
+       
+    </div>
+
+    <app-admin-add-categories-component [isVisible]="isVisible" (categoryCreated)="getCategories()"></app-admin-add-categories-component>
+ </div>

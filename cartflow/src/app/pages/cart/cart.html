@@ -1,0 +1,85 @@
+<section class="banner about section">
+    <div class="banner-wrapper">
+        <h1>My Cart</h1>
+    </div>
+</section>
+
+<!-- cart  -->
+ <section class="cart section">
+    <div class="container">
+
+        <div class="container-box">
+            @if (items.length === 0) {
+                    <p>Your cart is empty! <span routerLink="/products">Continue shopping</span></p>
+                }@else {
+
+                    <div class="table-container">
+  <table class="cart-table">
+    <thead>
+      <tr>
+        <th>Product</th>
+        <th>Price</th>
+        <th>Qty</th>
+        <th>Total</th>
+        <th>Delete</th>
+      </tr>
+    </thead>
+
+    <tbody>
+      <tr *ngFor="let item of items">
+        <td data-label="Product">
+          <div class="product-cell">
+            <div class="box-img"><img [src]="getImageUrl(item.imageUrl)" alt="" class="img-box"/></div>
+            <span class="name">{{ item.name }}</span>
+          </div>
+        </td>
+
+        <td data-label="Price">
+          {{ item.price | currency: "R" }}
+        </td>
+
+        <td data-label="Quantity">
+          {{ item.quantity }}
+        </td>
+
+        <td data-label="Total">
+          {{ item.price * item.quantity | currency: "R" }}
+        </td>
+
+        <td data-label="Delete">
+          <button class="delete-btn" (click)="remove(item.productId)">
+               <i class="fa-solid fa-xmark"></i>
+          </button>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+
+<div class="summary">
+  <div class="buttons">
+    <button class="btn secondary"  routerLink="/products">Continue Shopping</button>
+  </div>
+
+  <div class="summary-box">
+    <h3>Cart Totals</h3>
+    <div class="divider"></div>
+     <h3 class="price">Total: <span>{{ total | currency: "R" }}</span></h3>
+      <div class="buttons">
+        <button class="btn" (click)="checkout()">Proceed To Checkout <i class="fa-solid fa-money-bill-wave"></i></button>
+      </div>
+  </div>
+</div>
+                }
+        </div>
+
+
+
+    </div>
+ </section>
+
+
+ 
+<!-- login & register  -->
+ <app-login [isVisible]="isLoginVisible" (switchToRegister)="showRegister()"></app-login>
+ <app-register [isVisible]="isRegisterVisible" (switchToLogin)="showLogin()" (registered)="registrationSuccess()"></app-register>

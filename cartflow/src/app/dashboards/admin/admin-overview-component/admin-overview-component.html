@@ -1,0 +1,290 @@
+<!-- admin overview content  -->
+<div class="admin-overview-content">
+
+    <!-- stats  -->
+     <!-- <div class="stats-box">
+        <div class="box">
+            <div class="text">
+                <h3>Total Customers</h3>
+                <h2>{{ stats.totalCustomers || 0 }}</h2>
+            </div>
+            <div class="chart">
+                  <ngx-charts-line-chart
+                    [results]="customersChart"
+                    [scheme]="colorScheme"
+                    [legend]="false"
+                    [xAxis]="false"
+                    [yAxis]="false"
+                    [showGridLines]="false"
+                    [autoScale]="true"
+                    [curve]="curve"
+                    [view]="sparkView">
+                </ngx-charts-line-chart>
+            </div>
+        </div>
+        <div class="box">
+            <div class="text">
+                <h3>Total Products</h3>
+                <h2>{{ stats.totalProducts || 0}}</h2>
+            </div>
+            <div class="chart">
+                 <ngx-charts-pie-chart
+                    [results]="productsChart"
+                    [scheme]="colorScheme"
+                    [legend]="false"
+                    [labels]="false"
+                    [doughnut]="true"
+                    [animations]="true"
+                    [view]="view">
+                </ngx-charts-pie-chart>
+            </div>
+        </div>
+        <div class="box">
+            <div class="text">
+                <h3>Total Orders</h3>
+               <h2>{{ stats.totalOrders || 0}}</h2>
+            </div>
+            <div class="chart">
+                <ngx-charts-pie-chart
+                    [results]="ordersChart"
+                    [scheme]="colorScheme"
+                    [legend]="false"
+                    [labels]="false"
+                    [doughnut]="true"
+                    [animations]="true"
+                    [view]="view">
+                </ngx-charts-pie-chart>
+            </div>
+        </div>
+        <div class="box">
+            <div class="text">
+                <h3>Total Categories</h3>
+                <h2>{{ stats.totalCategories || 0}}</h2>
+            </div>
+            <div class="chart">
+                <ngx-charts-pie-chart
+                    [results]="categoriesChart"
+                    [scheme]="colorScheme"
+                    [legend]="false"
+                    [labels]="false"
+                    [doughnut]="true"
+                    [animations]="true"
+                    [view]="view">
+                </ngx-charts-pie-chart>
+            </div>
+        </div>
+     </div> -->
+     <div class="stats-box">
+  <div class="box" *ngFor="let stat of statsOverviewStats; let i = index">
+    <div class="text">
+      <h3>{{ stat.name }}</h3>
+      <h2>{{ stat.value }}</h2>
+    </div>
+    <div class="chart">
+        <ngx-charts-line-chart
+            [results]="
+            i === 0
+                ? customersChart
+                : i === 1
+                ? productsChart
+                : i === 2
+                ? ordersChart
+                : categoriesChart
+            "
+            [scheme]="colorScheme"
+            [legend]="false"
+            [xAxis]="false"
+            [yAxis]="false"
+            [showGridLines]="false"
+            [autoScale]="true"
+            [curve]="curve"
+            [view]="sparkView">
+        </ngx-charts-line-chart>
+    </div>
+  </div>
+</div>
+
+     
+<!-- charts container  -->
+<div class="chart-container">
+    <div class="box">
+       <div class="chart-box">
+            <div class="chartBox">
+                 <h3 class="heading">Summary</h3>
+                 <div class="chart-wrapper">
+                    <ngx-charts-bar-horizontal
+                        [view]="viewStats"
+                        [results]="statsOverviewStats"
+                        [scheme]="colorScheme"
+                        [xAxis]="true"
+                        [yAxis]="true"
+                        [legend]="true"
+                        [showDataLabel]="true"
+                        [gradient]="false"
+                        [animations]="true">
+                    </ngx-charts-bar-horizontal>
+                 </div>
+            </div>
+            <div class="chartBox">
+                  <h3 class="heading">Pie Chart</h3>
+                 <div class="chart-wrapper">
+                     <ngx-charts-pie-chart
+                        [results]="statsOverviewStats"
+                        [scheme]="colorScheme"
+                        [legend]="true"
+                        [labels]="true"
+                        [doughnut]="true"
+                        [animations]="true"
+                         [view]="viewStats">
+                    </ngx-charts-pie-chart>
+                 </div>
+            </div>
+       </div>
+    </div>
+    <div class="box">
+        <div class="text-wrapper">
+        <h3 class="heading">Most Selling Products<i class="fa-solid fa-ellipsis"></i></h3>
+
+        <div class="item-box">
+            <div class="item" *ngFor="let item of products.slice(0, 4)">
+                <div class="text-box">
+                    <div class="box-img"><img [src]=`${getImageUrl(item.imageUrl)}` alt="" class="img-box"></div>
+                    <div class="text">
+                        <h3>{{item.name}}</h3>
+                        <p class="item-date">23-24-2025</p>
+                    </div>
+                </div>
+                <h3 class="price">{{item.price | currency: "R"}}</h3>
+            </div>
+        </div>
+        </div>
+    </div>
+</div>
+
+<!-- new orders& customers  -->
+ <div class="order-customer-container">
+    <div class="box">
+         <div class="title-box">
+            <h3 class="heading">Recent Orders</h3>
+            <button class="view-all" routerLink="/admin/orders"  >View All</button>
+    </div>
+        <div class="table-content">
+  <table class="table-box">
+    <thead>
+      <tr>
+        <th>Customer</th>
+        <th>Phone</th>
+        <th>Product</th>
+        <th>Qty</th>
+        <th>Price</th>
+        <th>Status</th>
+        <th>Date</th>
+        <th>Action</th>
+      </tr>
+    </thead>
+
+    <tbody>
+      <tr *ngFor="let order of orders.slice(0, 4)">
+        <td data-label="Customer">
+          <div class="user">
+            <img [src]=`${getImageUrl(order.userImageUrl)}` alt=""  class="img-box"/>
+            {{ order.userName }}
+          </div>
+        </td>
+
+        <td data-label="Phone">
+          {{ order.userPhone }}
+        </td>
+
+        <td data-label="Product">
+          <div class="product">
+            <img [src]=`${getImageUrl(order.productImageUrl)}` alt=""  class="img-box"/>
+            {{ order.productName }}
+          </div>
+        </td>
+
+        <td data-label="Qty">
+          {{ order.quantity }}
+        </td>
+
+        <td data-label="Price">
+          {{ order.total | currency:"R"}}
+        </td>
+
+        <td data-label="Status">
+          <span class="status" [ngClass]="order.status.toLowerCase()">
+            {{ order.status }}
+          </span>
+        </td>
+
+        <td data-label="Date">
+          {{ order.createdAt | date:'shortDate' }}
+        </td>
+
+        <td data-label="Action">
+             <div class="buttons">
+               <i class="fa-solid fa-pen"></i>
+             </div>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+
+    </div>
+    <div class="box">
+         <div class="title-box">
+            <h3 class="heading">New Customers</h3>
+            <button class="view-all" routerLink="/admin/users"  >View All</button>
+    </div>
+       <div class="customer-box">
+            <div class="customer" *ngFor="let item of users.slice(0, 5)">
+                <div class="text-box">
+                    <div class="box-img"><img [src]=`${getImageUrl(item.imageUrl)}` alt="" class="img-box"></div>
+                    <div class="text">
+                        <h3>{{item.name}}</h3>
+                        <p>{{item.email}}</p>
+                    </div>
+                </div>
+                <div class="view"><i class="fa-solid fa-eye"></i></div>
+            </div>
+       </div>
+    </div>
+ </div>
+
+ <!-- new products  -->
+<div class="products-container">
+    <div class="title-box">
+         <h3 class="heading">New Products</h3>
+         <button class="view-all" routerLink="/admin/products"  >View All</button>
+    </div>
+
+    <div class="products-content">
+        <div class="box" *ngFor="let item of products.slice(5, 9)">
+                <div class="box-img"><img [src]=`${getImageUrl(item.imageUrl)}` alt="" class="img-box"></div>
+                <div class="text-box">
+                <div class="info">
+                    <div class="rating">
+                        <i class="fa-solid fa-star"></i>
+                        <i class="fa-solid fa-star"></i>
+                        <i class="fa-solid fa-star"></i>
+                        <i class="fa-regular fa-star-half-stroke"></i>
+                        <i class="fa-regular fa-star"></i>
+                    </div>
+                        <div class="name-category">
+                            <h3>{{item.name}}</h3>
+                            <span class="category">{{item.categoryName}}</span>
+                        </div>
+                        <h2 class="price">{{item.price | currency: "R"}}</h2>
+                </div>
+                    <div class="buttons">
+                        <i class="fa-solid fa-eye"></i>
+                        <i class="fa-solid fa-pen"></i>
+                        <i class="fa-solid fa-trash-can" (click)="deleteProduct(item.id)"></i>
+                    </div>
+                </div>
+            </div>
+    </div>
+</div>
+
+</div>

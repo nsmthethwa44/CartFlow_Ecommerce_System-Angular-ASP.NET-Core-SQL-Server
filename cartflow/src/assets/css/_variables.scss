@@ -1,0 +1,73 @@
+// ---------------------------------------
+// font family imports
+// ---------------------------------------
+@font-face {
+  font-family: --text;
+  src: url(../fonts/Montserrat-Medium.ttf);
+}
+
+@font-face {
+  font-family: --strong-heading;
+  src: url(../fonts/SairaCondensed-ExtraBold.ttf);
+}
+
+@font-face {
+  font-family: --light-heading ;
+  src: url(../fonts/SairaCondensed-Medium.ttf);
+}
+
+// ---------------------------------------
+// colors 
+// ---------------------------------------
+  $primary-color: #2563eb; //#3A7CA5
+  $secondary-color: #1e4ed8; 
+  $card-bg: #ebf2ff;
+  $card-bg-alt: #cddcff;
+  $body-bg: #F8FCFF;
+  $text-dark: #1C2A35;
+  $color: #F8FCFF;
+  $mute-color: #999797;
+  $color-danger: #ef4444;
+  $color-success: #22c55e;
+  $color-warning: #f59e0b;
+
+  // ---------------------------------------
+  // font size
+  // ---------------------------------------
+ $h2fs: 1.5rem;
+ $h3fs: 1rem;
+ $pfs: .8rem;
+
+   // ---------------------------------------
+  // font size
+  // ---------------------------------------
+  $h2ff: --strong-heading;
+  $h3ff: --light-heading;
+  $pff: --text;
+
+// ---------------------------------------
+// spacing
+// ---------------------------------------
+$space-1: 1rem;
+$space-2: 2rem;
+$space-3: .5rem;
+
+// ---------------------------------------
+// radius
+// ---------------------------------------
+$radius: .4rem;
+
+// ---------------------------------------
+// shadows
+// ---------------------------------------
+$shadow: 0 3px 10px rgba(0,0,0,0.25);
+
+// ---------------------------------------
+// transition
+// ---------------------------------------
+$transition: 400ms all ease-in-out;
+
+// ---------------------------------------
+// border
+// ---------------------------------------
+$border: 1px solid #E9F4FF

@@ -1,0 +1,62 @@
+<div class="login-register register" *ngIf="isVisible">
+   <form  [formGroup]="form" class="form" (ngSubmit)="register()">
+
+    <div class="close" (click)="closeRegister()"><i class="fa-solid fa-xmark"></i></div>
+
+    <div class="logo"><i class="fa-solid fa-cart-plus"></i></div>
+    <div class="title">
+        <h2>Get Started With Us</h2>
+        <p>Register & continue shopping</p>
+    </div>
+
+    <div class="inputs">
+        <label for="name">
+            <div class="label-input">
+                 <i class="fa-solid fa-user"></i>
+                <input type="text" formControlName="name" id="name" class="textBox" placeholder="Full Name">
+            </div>
+            <span class="error" *ngIf="form.get('name')?.invalid && form.get('name')?.touched">Name is required</span>
+        </label>
+        <label for="email">
+             <div class="label-input">
+                <i class="fa-solid fa-envelope"></i>
+                <input type="email" autocomplete="username" formControlName="email" id="email" class="textBox" placeholder="Email">
+             </div>
+            <span class="error" *ngIf="form.get('email')?.invalid && form.get('email')?.touched">Email is required</span>
+        </label>
+        <label for="password">
+             <div class="label-input">
+                   <i class="fa-solid fa-lock"></i>
+                 <input type="password" autocomplete="current-password" formControlName="password" id="pass" class="textBox" placeholder="Password">
+             </div>
+            <span class="error" *ngIf="form.get('password')?.invalid && form.get('password')?.touched">Password is required (min 5)</span>
+        </label>
+        <label for="photo">
+             <div class="label-input">
+                <i class="fa-solid fa-image"></i>
+                <input type="file" (change)="onFileSelected($event)" class="textBox" />
+             </div>
+        </label>
+   
+        <div class="remember-me">
+            <span class="check"><input type="checkbox" name="" id="">I agree to the <span>terms</span></span>
+        </div>
+
+        <div class="buttons">
+            <button type="submit" class="btn"><i class="fa-solid fa-right-to-bracket"></i>Register</button>
+        </div>
+
+        <p>Already have an account? <span (click)="onClickLogin()">Sing In</span></p>
+
+        <div class="sci-lgn">
+            <p>- Register With -</p>
+
+            <div class="sci">
+                <i class="fa-brands fa-facebook-f"></i>
+                <i class="fa-brands fa-twitter"></i>
+                <i class="fa-brands fa-instagram"></i>
+            </div>
+        </div>
+    </div>
+   </form>
+</div>

@@ -1,0 +1,56 @@
+<!-- main header  -->
+<header class="main-header" [class.active]="isScrolled">
+    <div class="top-bar">
+        <div class="container">
+            <p><i class="fa-solid fa-phone"></i>01234567899</p>
+            <p class="discount"><i class="fa-solid fa-tag"></i>Lorem <span>discount</span> Lorem, ipsum</p>
+            <p class="account" (click)="showLogin()"><i class="fa-solid fa-circle-user"></i>My Account</p>
+        </div>
+    </div>
+
+    <div class="bottom-bar">
+        <div class="container">
+            <div class="logo"><i class="fa-solid fa-cart-plus"></i><h2>Cart<span>Flow</span></h2></div>
+
+            <div class="navbar">
+                 <ul class="nav" [class.active]="isNavBarOpen">
+                    <li><a routerLink="/" routerLinkActive="active" [routerLinkActiveOptions]="{ exact: true }" (click)="closeNavbar()">Home</a></li>
+                    <li><a routerLink="/about" routerLinkActive="active" (click)="closeNavbar()">About</a></li>
+                    <li><a routerLink="/products" routerLinkActive="active" (click)="closeNavbar()">Products</a></li>
+                    <li><a routerLink="/blog" routerLinkActive="active" href="/blog" (click)="closeNavbar()">Blog</a></li>
+                    <li><a routerLink="/contact" routerLinkActive="active" href="" (click)="closeNavbar()">Contact</a></li>
+              
+              <div class="close-nav" (click)="closeNavbar()">
+                        <i class="fa-solid fa-xmark"></i>
+                </div>
+                </ul>
+
+                <div class="controls">
+                    <i class="fa-solid fa-magnifying-glass"></i>
+                    <i class="fa-solid fa-cart-plus" routerLink="/cart"><span class="counter" >{{ (cartCount$ | async) ?? 0 }}</span></i>
+                    <i class="fa-solid fa-heart"><span class="counter">0</span></i>
+
+                    <div class="menu-nav" (click)="toggleNavBar()"><i class="fa-solid fa-bars-staggered"></i></div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+    <!-- dashboard links  -->
+ <div class="dashboard-links section" *ngIf="isVisible">
+    <div class="container">
+            <nav class="nav">
+                <li routerLink="/customer"><i class="fa-solid fa-layer-group"></i>My Dashboard</li>
+                <li (click)="logOut()"><i class="fa-solid fa-right-from-bracket"></i>Log Out</li>
+        </nav>
+    </div>
+ </div>
+</header>
+
+<!-- login & register  -->
+ <app-login [isVisible]="isLoginVisible" (switchToRegister)="showRegister()"></app-login>
+ <app-register [isVisible]="isRegisterVisible" (switchToLogin)="showLogin()" (registered)="registrationSuccess()"></app-register>
+
+
+ 

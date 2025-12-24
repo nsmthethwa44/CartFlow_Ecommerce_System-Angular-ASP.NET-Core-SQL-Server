@@ -1,0 +1,51 @@
+@import "./variables";
+
+@mixin flex{
+    display: flex;
+   align-items: center;
+}
+
+@mixin flex-center{
+    display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+@mixin flex-justify{
+    display: flex;
+     justify-content: space-between;
+  }
+
+  @mixin grid-flow{
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+    gap: $space-1;
+  }
+
+@mixin card {
+  background: $card-bg;
+  padding: $space-1 $space-1;
+  border-radius: $radius;
+//  border: $border;
+}
+
+@mixin container{
+    width: 1700px;
+    max-width: 100%;
+    margin: 0 auto;
+    position: relative;
+}
+
+@mixin overlay{
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 1000;
+    background: rgba($primary-color, 0.4);
+    transition: $transition;
+    overflow-y: auto;
+    @include flex-center();
+
+}

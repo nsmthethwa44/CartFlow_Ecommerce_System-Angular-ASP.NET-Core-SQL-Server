@@ -1,0 +1,19 @@
+<div class="dashboard hide-sidebar">
+    <!-- sidebar  -->
+     <app-sidebar role="customer"></app-sidebar>
+
+    <!-- main  -->
+     <div class="main">
+        <div class="main-content">
+               <!-- header  -->
+             <app-header></app-header>
+
+              <div class="overview">
+                <router-outlet></router-outlet>
+              </div>
+        </div>
+        
+       <!-- copyright  -->
+            <app-copyright></app-copyright>
+     </div>
+</div>

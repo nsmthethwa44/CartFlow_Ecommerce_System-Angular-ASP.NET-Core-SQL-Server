@@ -1,0 +1,26 @@
+<div class="overlay section">
+    <div class="container">
+        <div class="box">
+            <div class="close" (click)="closePopup()"><i class="fa-solid fa-xmark"></i></div>
+
+            <div class="box-img"><img [src]="`${getImageUrl(product.imageUrl)}`"  class="img-box"/></div>
+            <div class="text-box">
+                <h3>{{product.name}}</h3>
+                <div class="rating">
+                    <i class="fa-solid fa-star"></i>
+                        <i class="fa-solid fa-star"></i>
+                        <i class="fa-solid fa-star"></i>
+                        <i class="fa-regular fa-star-half-stroke"></i>
+                        <i class="fa-regular fa-star"></i>
+                </div>
+                <p>GET http://localhost:4200/main.js net::ERR_ABORTED 404 (Not Found)</p>
+                 <div class="price">
+                        <h2>{{product.price | currency: "R"}}</h2>
+                        <div class="add-cart">
+                            <i class="fa-solid fa-heart"></i>
+                            <i class="fa-solid fa-cart-plus"></i>
+                        </div>
+            </div>
+        </div>
+    </div>
+</div>

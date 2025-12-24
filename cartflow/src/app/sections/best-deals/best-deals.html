@@ -1,0 +1,44 @@
+<section class="section best-deals" id="deals">
+    <div class="container">
+         <div class="section-title">
+            <div class="text">
+                <span>Best Deals</span>
+                <h2>Lorem, ipsum deals</h2>
+            </div>
+
+            <div class="buttons">
+                <button class="btn" routerLink="/products">View All<i class="fa-solid fa-arrow-right-long"></i></button>
+            </div>
+        </div>
+
+         @if (isLoading) {
+            <div class="isLoading">
+                <div class="loader"></div>
+            </div>
+        }@else {
+        <div class="container-box">
+            <div class="box" *ngFor="let item of products.slice(0, 8)">
+                <div class="box-img"><img [src]=`${getImageUrl(item?.imageUrl)}` alt={{item?.name}} class="img-box"></div>
+                <div class="text">
+                    <h3>{{item?.name}}</h3>
+                      <div class="rating">
+                        <i class="fa-solid fa-star"></i>
+                        <i class="fa-solid fa-star"></i>
+                        <i class="fa-solid fa-star"></i>
+                        <i class="fa-regular fa-star-half-stroke"></i>
+                        <i class="fa-regular fa-star"></i>
+                    </div>
+                     <div class="price">
+                        <h2>{{item?.price | currency: "R"}}</h2>
+                        <div class="add-cart">
+                            <i class="fa-solid fa-heart"></i>
+                            <i class="fa-solid fa-cart-plus" (click)="addToCart(item.id)"></i>
+                        </div>
+                     </div>
+                </div>
+            </div>
+        </div>
+    }
+
+    </div>
+</section>

@@ -1,0 +1,14 @@
+<div class="header header">
+    <div class="content">
+        <div class="menu-box" (click)="toggleSidebar()"><i class="fa-solid fa-bars-staggered"></i></div>
+
+        <div class="user" *ngIf="loggedInUser | async as user;">
+            <div class="alert-mode">
+                <div class="alert"><i class="fa-solid fa-bell"></i></div>
+                <div class="mode"><i class="fa-solid fa-moon"></i></div>
+            </div>
+
+            <div class="box-img"><img [src]="`${getImageUrl(user.imageUrl)}`" alt="" class="img-box"></div>
+        </div>
+    </div>
+</div>

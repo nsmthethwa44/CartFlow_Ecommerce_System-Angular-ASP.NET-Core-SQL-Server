@@ -1,0 +1,32 @@
+<div class="sidebar">
+
+  <div class="close-box" (click)="closeSidebar()"><i class="fa-solid fa-xmark"></i></div>
+
+    <div class="content">
+         <div class="logo">
+           <i class="fa-solid fa-cart-plus"></i>
+            <h2>CartFlow</h2>
+        </div>
+
+        <div class="navbar">
+            <ul class="nav">
+            <li *ngFor="let link of links">
+            <a [routerLink]="link.path"
+                routerLinkActive="active"  (click)="closeSidebar()"
+                [routerLinkActiveOptions]="{ exact: true }">
+                <i [ngClass]="link.icon"></i>{{ link.label }}
+            </a>
+            </li>
+            </ul>
+
+             <div class="buttons logOut">
+             <a href="#" (click)="logOut()"><i class="fa-solid fa-arrow-right-to-bracket"></i>LogOut</a>
+        </div>
+        </div>
+    </div>
+
+      <div class="buttons help">
+        <i class="fa-solid fa-question"></i>
+             <p>Help Center</p>
+        </div>
+</div>

@@ -1,0 +1,80 @@
+<!-- manage user content  -->
+ <div class="manage-users-content content-wrapper">
+
+       <!-- title  -->
+    <div class="title">
+        <h2>Manage Users</h2>
+        <span class="date"><i class="fa-regular fa-calendar-days"></i>{{ getDate() | date: 'MMM d, y, h:m a' }}</span>
+    </div>
+
+    <div class="container-box">
+             <div class="controls">
+            <div class="search">
+                <div class="search-box">
+                    <i class="fa-solid fa-magnifying-glass"></i>
+                    <input type="text" class="search-text" placeholder="Search categories">
+                </div>
+            </div>
+
+            <div class="filter">
+                <div class="filter-box">
+                    <i class="fa-solid fa-filter"></i>
+                    <i class="fa-solid fa-border-all"></i>
+                </div>
+                <div class="buttons">
+                    <button class="btn"><i class="fa-solid fa-plus"></i> Add New</button>
+                </div>
+            </div>
+        </div>
+
+         @if (isLoading) {
+            <div class="isLoading">
+                <div class="loader"></div>
+            </div>
+        }@else {
+             <div class="table-content">
+  <table class="table-box">
+    <thead>
+      <tr>
+        <th>User</th>
+        <th>Email</th>
+        <th>Role</th>
+        <th>Date</th>
+        <th>Action</th>
+      </tr>
+    </thead>
+
+    <tbody>
+      <tr *ngFor="let item of users">
+        <td data-label="Customer">
+          <div class="user">
+            <img [src]=`${getImageUrl(item.imageUrl)}` alt=""  class="img-box"/>
+           {{item.name}}
+          </div>
+        </td>
+
+        <td data-label="email">
+          {{ item.email }}
+        </td>
+
+        <td data-label="role">
+          {{ item.role }}
+        </td>
+          <td data-label="role">
+          {{ item.createdAt | date: 'shortDate'}}
+        </td>
+
+        <td data-label="Action">
+             <div class="buttons">
+                <i class="fa-solid fa-eye"></i>
+                <i class="fa-solid fa-trash-can"></i>
+             </div>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+        }
+    </div>
+
+ </div>

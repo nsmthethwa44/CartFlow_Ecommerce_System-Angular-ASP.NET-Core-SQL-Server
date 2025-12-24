@@ -1,0 +1,22 @@
+<!-- add-new  -->
+ <div class="add-new" *ngIf="isVisible">
+    <form [formGroup]="form" class="form" (ngSubmit)="addCategory()">
+        <div class="title">
+            <h3><i class="fa-solid fa-plus"></i>Add New Category</h3>
+            <div class="close" (click)="closeAddCategory()"><i class="fa-solid fa-xmark"></i></div>
+        </div>
+
+        <div class="inputs">
+            <label for="name">Name:
+                <input type="text" formControlName="name" class="textBox" placeholder="Category name">
+            </label>
+                 <label for="file">Upload Image:
+                <input type="file" class="textBox"(change)="onFileSelected($event)">
+            </label>
+
+            <div class="buttons">
+                <button type="submit" class="btn"><i class="fa-solid fa-floppy-disk"></i>Save Category</button>
+            </div>
+        </div>
+    </form>
+ </div>
