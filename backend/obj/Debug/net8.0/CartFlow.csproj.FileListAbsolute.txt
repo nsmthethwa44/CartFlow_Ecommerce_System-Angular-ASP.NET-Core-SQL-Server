@@ -178,4 +178,5 @@ C:\Users\user\Desktop\Programming\Web Design\Angular\Web Apps\CartFlow_Ecommerce
 C:\Users\user\Desktop\Programming\Web Design\Angular\Web Apps\CartFlow_Ecommerce_System\backend\obj\Debug\net8.0\CartFlow.pdb
 C:\Users\user\Desktop\Programming\Web Design\Angular\Web Apps\CartFlow_Ecommerce_System\backend\obj\Debug\net8.0\CartFlow.genruntimeconfig.cache
 C:\Users\user\Desktop\Programming\Web Design\Angular\Web Apps\CartFlow_Ecommerce_System\backend\obj\Debug\net8.0\ref\CartFlow.dll
+C:\Users\user\Desktop\Programming\Web Design\Angular\Web Apps\CartFlow_Ecommerce_System\backend\obj\Debug\net8.0\CartFlow.sourcelink.json
 C:\Users\user\Desktop\Programming\Web Design\Angular\Web Apps\CartFlow_Ecommerce_System\backend\obj\Debug\net8.0\staticwebassets.upToDateCheck.txt

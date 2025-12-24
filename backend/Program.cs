@@ -18,7 +18,10 @@ builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 
 // Local configure AppDbContext or db
-builder.Services.AddDbContext<AppDbContext>(options => options.UseSqlServer(builder.Configuration.GetConnectionString("DbConnection")));
+//builder.Services.AddDbContext<AppDbContext>(options => options.UseSqlServer(builder.Configuration.GetConnectionString("DbConnection")));
+
+// online db
+builder.Services.AddDbContext<AppDbContext>(options => options.UseNpgsql(builder.Configuration.GetConnectionString("DbConnection")));
 
 // repos
 builder.Services.AddScoped<ICartRepository, CartRepository>();
@@ -58,7 +61,7 @@ builder.Services.AddCors(options =>
         policy.AllowAnyHeader()
               .AllowAnyMethod()
               .AllowCredentials()
-              .WithOrigins("https://estateflowsystem.netlify.app", "http://localhost:4200"));
+              .WithOrigins("https://cartflowsystem.netlify.app", "http://localhost:4200"));
 });
 
 var app = builder.Build();
