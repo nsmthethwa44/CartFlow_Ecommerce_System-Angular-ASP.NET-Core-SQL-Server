@@ -210,20 +210,13 @@ ng serve
 Production Build
 ng build --configuration production
 
-What This Project Demonstrates
-
-Real e-commerce logic (not CRUD-only)
-
-Cart persistence strategies (localStorage + DB)
-
-Clean API layering and contracts
-
-Admin analytics & dashboards
-
-Frontend–backend synchronization via RxJS
-
-Production-oriented structure
+What This Project Demonstrates:
+- Real e-commerce logic (not CRUD-only)
+- Cart persistence strategies (localStorage + DB)
+- Clean API layering and contracts
+- Admin analytics & dashboards
+- Frontend–backend synchronization via RxJS
+- Production-oriented structure
 
 License
-
 MIT
