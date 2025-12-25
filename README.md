@@ -1,140 +1,94 @@
-# CartFlow_Ecommerce_System-Angular-ASP.NET-Core-SQL-Server
+CartFlow – Full-Stack E-Commerce System - (Angular, ASP.NET Core Web API, SQL Server)
 
-CartFlow is a role-based e-commerce platform designed to model a real online shopping system with admin management, customer shopping flow, cart persistence, and order processing.
-The system is intentionally built to reflect real-world e-commerce behavior, not a simplified demo store.
+CartFlow is a full-stack, role-based e-commerce platform designed to model real online shopping behavior, including product management, cart persistence, checkout flows, and order processing.
+The system is intentionally built to reflect production-level e-commerce logic, not a simplified demo store.
 
-Project Goals:
-- Model a complete shopping lifecycle: browse → cart → checkout → order
-- Support guest and authenticated cart flows
-- Maintain clean separation of concerns (Controller → Service → Repository)
-- Provide admin analytics and operational control
-- Serve as a production-ready full-stack reference project
+Project Overview:
+- CartFlow models the complete shopping lifecycle from product discovery to order placement, while supporting both guest and authenticated users.
+- The project focuses on clean API layering, cart persistence strategies, admin operational control, and frontend–backend state synchronization.
 
-Core Roles:
-Admin
-- Manage products and categories
-- Monitor orders and customers
-- View platform analytics and KPIs
+User Roles & Flows:
+- Admin:
+	- Manages products and categories
+	- Reviews customer orders
+	- Monitors platform analytics and KPIs
+	- Oversees store activity via dashboards
 
-Customer
-- Browse products
-- Add to cart (guest or logged-in)
-- Checkout and place orders
-- Track order history
+- Customer:
+	- Browses products
+	- Adds items to cart as guest or logged-in user
+	- Completes checkout and places orders
+	- Tracks order history
 
-User Flows:
-- Customer Flow (Guest & Authenticated)
-- Browse products → /products
-- View product details
-- Add products to cart
-- Guest → cart stored in localStorage
-- Logged-in → cart stored in database
-- View cart → /cart
-- Checkout → /checkout
-- Place order
-- View order confirmation & history
-- Guest cart automatically syncs to DB after login.
-
-Admin Flow:
-- Login → /admin
-- Dashboard overview:
-  - Total customers
-  - Total products
-  - Total orders
-  - Total categories
-- Manage categories (CRUD + images)
-- Manage products (CRUD + stock + images)
-- Review orders:
-  - Order items
-  - Customer details
-  - Order status
-  - Monitor sales and activity via charts
-
-Key Features:
+Features:
 - Shopping & Cart:
-  - Add to cart (guest & logged-in)
-  - Persistent cart counter in header
-  - Quantity updates
-  - Remove items
-  - Cart merge after login
+	- Add to cart (guest & authenticated)
+	- Cart persistence via localStorage and database
+	- Automatic cart merge after login
+	- Persistent cart counter in header
+	- Quantity updates and item removal
+
 - Orders:
-  - Order creation from cart
-  - Order item snapshot at purchase time
-  - Admin order review
-  - Customer order history
+	- Order creation from cart
+	- Order item snapshot at purchase time
+	- Customer order history
+	- Admin order review with customer details
+
 - Admin Dashboard:
-  - KPI stat cards with sparklines
-  - Bar & pie charts (ngx-charts)
-  - Centralized stats endpoint
+	- KPI stat cards with sparklines
+	- Bar and pie charts using ngx-charts
+	- Centralized dashboard stats endpoint
+
 - Media Handling:
-  - Product & category image uploads
-  - Server-stored images with URL mapping
-
-Architecture Overview:
-- Backend (ASP.NET Core Web API)
-- Layered, SOLID-driven structure:
-- Controllers
-- Services
-- Repositories
-- DTOs
-- Entities
-- Controllers handle HTTP only
-- Services handle business logic
-- Repositories handle data access
-- DTOs isolate API contracts
-- No AutoMapper (explicit mapping for clarity)
-
-Frontend (Angular):
-- Feature-based module structure
-- Shared services (cart, stats, products)
-- RxJS for state synchronization
-- SCSS modular styling
-- Responsive admin & customer UI
+	- Product and category image uploads
+	- Server-stored images with URL mapping
 
 Tech Stack:
-- Frontend
-- Angular 20
-- SCSS (modular structure)
-- ngx-charts
-- RxJS
+- Frontend:
+	- Angular 20
+	- SCSS (modular structure)
+	- ngx-charts
+	- RxJS
 
-Backend:
-- ASP.NET Core Web API
-- Entity Framework Core
+- Backend:
+	- ASP.NET Core Web API
+	- Entity Framework Core
 
-Database:
-- SQL Server
-- Tooling
-- RESTful APIs
-- JWT-ready auth (pluggable)
-- GitHub Actions (CI/CD ready)
+- Database:
+	- SQL Server
+	- Architecture & Tooling
+	- RESTful APIs
+	- JWT-ready authentication (pluggable)
+	- GitHub Actions (CI/CD ready)
+	- SOLID principles and clean layering
 
-API Highlights:
-- /api/products
-- /api/categories
-- /api/cart
-- /api/orders
-- /api/stats/dashboard
+- Architecture & Design:
+	- CartFlow follows a strict layered architecture with clear separation of responsibilities:
+	- Controllers handle HTTP concerns only
+	- Services encapsulate business logic
+	- Repositories manage data access
+	- DTOs define API contracts
+	- Explicit mapping is used (no AutoMapper) for clarity and control
+
+This structure keeps the system maintainable, testable, and easy to extend.
+
+Project Structure:
+- /backend   → ASP.NET Core Web API
+- /frontend  → Angular application
+- /db        → Database scripts / migrations
 
 Setup & Running:
-- Backend
-- dotnet restore
-- dotnet run
+- Backend:
+	- dotnet restore
+	- dotnet run
 
-Frontend:
-- npm install --legacy-peer-deps
-- ng serve
+- Frontend:
+	- npm install --legacy-peer-deps
+	- ng serve
 
 Production Build:
 - ng build --configuration production
 
-What This Project Demonstrates:
-- Real e-commerce logic (not CRUD-only)
-- Cart persistence strategies (localStorage + DB)
-- Clean API layering and contracts
-- Admin analytics & dashboards
-- Frontend–backend synchronization via RxJS
-- Production-oriented structure
-
-License:
-- MIT
+Links:
+- Live Demo: https://cartflowsystem.netlify.app/
+- GitHub Repository: This Repository
