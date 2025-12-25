@@ -28,7 +28,7 @@
                 <div class="controls">
                     <i class="fa-solid fa-magnifying-glass"></i>
                     <i class="fa-solid fa-cart-plus" routerLink="/cart"><span class="counter" >{{ (cartCount$ | async) ?? 0 }}</span></i>
-                    <i class="fa-solid fa-heart"><span class="counter">0</span></i>
+                    <i class="fa-solid fa-heart" routerLink="/wishlist"><span class="counter">{{(wishlistCount$ | async ) ?? 0}}</span></i>
 
                     <div class="menu-nav" (click)="toggleNavBar()"><i class="fa-solid fa-bars-staggered"></i></div>
                 </div>

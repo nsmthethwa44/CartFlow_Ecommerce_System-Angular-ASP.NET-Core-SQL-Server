@@ -1,0 +1,65 @@
+<section class="banner about section">
+    <div class="banner-wrapper">
+        <h1>My Wishlist</h1>
+    </div>
+</section>
+
+<!-- cart  -->
+ <section class="cart section">
+    <div class="container">
+
+        <div class="container-box">
+            @if (items.length === 0) {
+                    <p>Your wishlist is empty! <span routerLink="/products">Continue shopping</span></p>
+                }@else {
+
+                    <div class="table-container">
+  <table class="cart-table">
+    <thead>
+      <tr>
+        <th>Product</th>
+        <th>Price</th>
+        <th>Qty</th>
+        <th>Total</th>
+        <th>Delete</th>
+      </tr>
+    </thead>
+
+    <tbody>
+      <tr *ngFor="let item of items">
+        <td data-label="Product">
+          <div class="product-cell">
+            <div class="box-img"><img [src]="getImageUrl(item.imageUrl)" alt="" class="img-box"/></div>
+            <span class="name">{{ item.name }}</span>
+          </div>
+        </td>
+
+        <td data-label="Price">
+          {{ item.price | currency: "R" }}
+        </td>
+
+        <td data-label="Quantity">
+          {{ item.quantity }}
+        </td>
+
+        <td data-label="Total">
+          {{ item.price * item.quantity | currency: "R" }}
+        </td>
+
+        <td data-label="Delete">
+          <button class="add-to-cart-btn" (click)="addToCart(item.productId)">
+               <i class="fa-solid fa-cart-plus"></i>
+          </button>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+
+                }
+        </div>
+
+
+
+    </div>
+ </section>

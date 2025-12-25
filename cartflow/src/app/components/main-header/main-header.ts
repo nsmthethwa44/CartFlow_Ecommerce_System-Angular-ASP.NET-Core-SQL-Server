@@ -8,6 +8,7 @@ import { Observable } from 'rxjs/internal/Observable';
 import { CommonModule } from '@angular/common';
 import { HostListener } from '@angular/core';
 import { Auth } from '../../auth/services/auth';
+import { WishlistService } from '../../services/wishlist-service';
 
 @Component({
   selector: 'app-main-header',
@@ -20,11 +21,11 @@ isLoginVisible = false;
 isRegisterVisible = false;
 isNavBarOpen = false;
 cartCount$!: Observable<number>;
-constructor(private cartSvc: CartService, private authSvc: Auth) {}
+wishlistCount$!: Observable<number>;
+constructor(private cartSvc: CartService, private authSvc: Auth, private wishlistSvc: WishlistService) {}
 @Input() isVisible = false;
 
  isScrolled = false;
-
 
  @HostListener('window:scroll', [])
   onWindowScroll(){
@@ -34,6 +35,7 @@ constructor(private cartSvc: CartService, private authSvc: Auth) {}
 
 ngOnInit() {
   this.cartCount$ = this.cartSvc.cartCount$;
+  this.wishlistCount$ = this.wishlistSvc.wishlistCount$;
 }
 
 

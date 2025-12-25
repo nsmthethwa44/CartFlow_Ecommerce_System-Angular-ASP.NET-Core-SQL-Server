@@ -226,6 +226,23 @@ span{
   }
 }
 
+.add-to-cart-btn {
+    width: 2.5rem;
+    height: 2.5rem;
+  background: rgba($primary-color 0.15);
+  border: none;
+  color: $primary-color;
+  font-size: 1.1rem;
+  cursor: pointer;
+  border-radius: 50%;
+//   box-shadow: $shadow;
+
+  &:hover {
+    color: $color;
+    background: $secondary-color;
+  }
+}
+
 @media (max-width: 768px) {
   .cart-table,
   .cart-table thead,

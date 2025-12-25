@@ -16,6 +16,7 @@ import { Contact } from './pages/contact/contact';
 import { Cart } from './pages/cart/cart';
 import { Checkout } from './pages/checkout/checkout';
 import { AdminOrdersComponent } from './dashboards/admin/admin-orders-component/admin-orders-component';
+import { Wishlist } from './pages/wishlist/wishlist';
 
 export const routes: Routes = [
     {path: "admin", component: AdminDashboardComponent, canActivate: [AuthGuard], data: { role: 'Admin' }, children:[
@@ -39,6 +40,7 @@ export const routes: Routes = [
         {path: "blog", component: Blog},
         {path: "contact", component: Contact},
         {path: "cart", component: Cart},
+        {path: "wishlist", component: Wishlist},
         {path: "checkout", component: Checkout},
     ]},
     {path:"**", redirectTo: "",}

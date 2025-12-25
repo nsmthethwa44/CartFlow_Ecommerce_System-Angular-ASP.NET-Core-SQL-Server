@@ -7,6 +7,7 @@ import { ProductDetails } from "../../components/product-details/product-details
 import { RouterLink } from '@angular/router';
 import { CartService } from '../../services/cart-service';
 import { Auth } from '../../auth/services/auth';
+import { WishlistService } from '../../services/wishlist-service';
 
 @Component({
   selector: 'app-popular',
@@ -20,7 +21,8 @@ private baseUrl = environment.apiUrl;
 products: Product[] = [];
 selectedProduct: any = null;
 
-constructor(private productSvc: ProductService, private authSvc: Auth, private cartSvc: CartService){};
+constructor(private productSvc: ProductService, private authSvc: Auth,
+   private cartSvc: CartService, private wishlistSvc: WishlistService){};
 
 getProducts(){
   this.isLoading = true;
@@ -51,4 +53,13 @@ getImageUrl(path: string | undefined): string{
     this.cartSvc.addToDbCart({ productId, quantity: 1 }).subscribe();
   }
 }
+
+addToWishLIst(productId: number) {
+  if (!this.authSvc.isLoggedIn) {
+    this.wishlistSvc.addToLocalWishList(productId);
+  } else {
+    this.wishlistSvc.addToDbWishList({ productId, quantity: 1 }).subscribe();
+  }
+}
+
 }

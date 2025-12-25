@@ -6,6 +6,7 @@ import { CommonModule } from '@angular/common';
 import { RouterLink } from '@angular/router';
 import { CartService } from '../../services/cart-service';
 import { Auth } from '../../auth/services/auth';
+import { WishlistService } from '../../services/wishlist-service';
 
 @Component({
   selector: 'app-best-deals',
@@ -18,7 +19,8 @@ isLoading = false;
 private baseUrl = environment.apiUrl;
 products: Product[] = [];
 
-constructor(private productSvc: ProductService, private authSvc: Auth, private cartSvc: CartService){};
+constructor(private productSvc: ProductService, private authSvc: Auth, 
+  private cartSvc: CartService, private wishlistSvc: WishlistService){};
 
 getProducts(){
   this.isLoading = true;
@@ -43,6 +45,14 @@ addToCart(productId: number) {
     this.cartSvc.addToLocalCart(productId);
   } else {
     this.cartSvc.addToDbCart({ productId, quantity: 1 }).subscribe();
+  }
+}
+
+addToWishLIst(productId: number) {
+  if (!this.authSvc.isLoggedIn) {
+    this.wishlistSvc.addToLocalWishList(productId);
+  } else {
+    this.wishlistSvc.addToDbWishList({ productId, quantity: 1 }).subscribe();
   }
 }
 
