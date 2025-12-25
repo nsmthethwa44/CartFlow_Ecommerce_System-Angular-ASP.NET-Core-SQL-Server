@@ -17,8 +17,8 @@
                  <div class="price">
                         <h2>{{product.price | currency: "R"}}</h2>
                         <div class="add-cart">
-                            <i class="fa-solid fa-heart"></i>
-                            <i class="fa-solid fa-cart-plus"></i>
+                            <i class="fa-solid fa-heart" (click)="addToWishLIst(product.id)"></i>
+                            <i class="fa-solid fa-cart-plus"  (click)="addToCart(product.id)"></i>
                         </div>
             </div>
         </div>
