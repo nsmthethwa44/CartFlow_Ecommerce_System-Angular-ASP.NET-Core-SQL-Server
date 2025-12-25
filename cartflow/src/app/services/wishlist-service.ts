@@ -4,7 +4,7 @@ import { HttpClient } from '@angular/common/http';
 import { BehaviorSubject, tap, map, of, forkJoin} from 'rxjs';
 import { Product } from '../models/product';
 import { WishListItem } from '../models/wishlistItem';
-import { AddToWishListDto } from '../models/addTowishlist';
+import { AddToWishListDto } from '../models/addToWish';
 
 @Injectable({
   providedIn: 'root',
